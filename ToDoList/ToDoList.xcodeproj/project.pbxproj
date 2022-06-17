@@ -23,6 +23,7 @@
 		C3285588285CE1A500999F35 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285587285CE1A500999F35 /* View+Extensions.swift */; };
 		C328558C285CE27600999F35 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C328558B285CE27600999F35 /* InputTextField.swift */; };
 		C3FA73A6285CE56C004F71FF /* CheckMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA73A5285CE56C004F71FF /* CheckMark.swift */; };
+		C3FA73AA285CE6C0004F71FF /* SegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA73A9285CE6C0004F71FF /* SegmentedPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		C3285587285CE1A500999F35 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		C328558B285CE27600999F35 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		C3FA73A5285CE56C004F71FF /* CheckMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMark.swift; sourceTree = "<group>"; };
+		C3FA73A9285CE6C0004F71FF /* SegmentedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				C328558B285CE27600999F35 /* InputTextField.swift */,
+				C3FA73A9285CE6C0004F71FF /* SegmentedPicker.swift */,
 				C3FA73A5285CE56C004F71FF /* CheckMark.swift */,
 			);
 			path = Common;
@@ -231,6 +234,7 @@
 				C3285578285CE06000999F35 /* TaskListViewModel.swift in Sources */,
 				C3285567285CDFAF00999F35 /* ContentView.swift in Sources */,
 				C328557D285CE0BC00999F35 /* MockContentProvider.swift in Sources */,
+				C3FA73AA285CE6C0004F71FF /* SegmentedPicker.swift in Sources */,
 				C328558C285CE27600999F35 /* InputTextField.swift in Sources */,
 				C3285581285CE10500999F35 /* DataManager.swift in Sources */,
 				C3285588285CE1A500999F35 /* View+Extensions.swift in Sources */,

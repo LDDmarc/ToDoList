@@ -9,13 +9,20 @@ import SwiftUI
 
 struct DetailTaskView: View {
     @ObservedObject var viewModel: TaskViewModel
+    @State var state: EditingState
+    @Binding var isPresented: Bool
     
-    @State private var isEditing = true
     @FocusState private var isFocused: Bool
     private var priorities = TaskModel.Priority.allCases
     
-    init(viewModel: TaskViewModel) {
+    init(
+        viewModel: TaskViewModel,
+        state: EditingState,
+        isPresented: Binding<Bool>
+    ) {
         self.viewModel = viewModel
+        self.state = state
+        _isPresented = isPresented
     }
     
     var body: some View {
@@ -35,7 +42,11 @@ struct DetailTaskView: View {
                     focused: _isFocused
                 ).padding()
                 
-                priorityPicker.padding()
+                SegmentedPicker(
+                    title: "Priority",
+                    selection: $viewModel.priority,
+                    selectionList: priorities
+                ).padding()
                 
                 HStack {
                     Text("Status")
@@ -46,62 +57,75 @@ struct DetailTaskView: View {
                 
                 Spacer()
                 
-                if isEditing {
-                    buttons.padding()
+                switch state {
+                case .addNew:
+                    saveButton.padding()
+                case .edit:
+                    editButtons.padding()
+                case .none:
+                    EmptyView()
                 }
                 
                 Spacer()
             }
-            .disabled(!isEditing)
+            .disabled(state == .none)
             .navigationTitle("Task")
             .toolbar {
-                editButton
+                editToolBarButton
             }
         }
     }
     
-    private var priorityPicker: some View {
-        VStack(alignment: .leading) {
-            Text("Priority")
-                .font(.callout)
-            
-            Picker("Priority", selection: $viewModel.priority) {
-                ForEach(priorities, id: \.rawValue) { priority in
-                    Text(priority.emoji)
-                        .tag(priority)
-                }
-            }
-            .pickerStyle(SegmentedPickerStyle())
-        }
-    }
-    
-    private var buttons: some View {
+    private var editButtons: some View {
         ButtonsView(
             title1: "Save",
             action1: {
                 isFocused = false
-                isEditing.toggle()
+                state = .none
                 
             },
             title2: "Cancel",
             action2: {
                 viewModel.rollBack()
-                isEditing.toggle()
+                state = .none
             }
         )
     }
     
-    private var editButton: some View {
+    private var saveButton: some View {
         Button {
-            isEditing.toggle()
-            if isEditing { viewModel.makeReserveCopy() }
+            viewModel.create()
+            isPresented.toggle()
         } label: {
-            if !isEditing { Text("Edit") }
+            Text("Save")
+                .bold()
+                .foregroundColor(Color(UIColor.systemGreen))
+                .frame(maxWidth: .infinity)
+                .padding()
+                .roundedBorder()
+        }
+        .disabled(viewModel.name.isEmpty)
+        .opacity(viewModel.name.isEmpty ? 0.3 : 1)
+    }
+    
+    private var editToolBarButton: some View {
+        return Button {
+            if state == .edit { viewModel.makeReserveCopy() }
+        } label: {
+            if state == .none { Text("Edit") }
         }
     }
 }
 
-private struct ButtonsView: View {
+extension DetailTaskView {
+    enum EditingState {
+        case addNew
+        case edit
+        case none
+    }
+}
+
+fileprivate struct ButtonsView: View {
     var title1: String
     var action1: () -> Void
     var title2: String
@@ -139,7 +163,7 @@ struct DetailTaskView_Previews: PreviewProvider {
         NavigationView {
             let provider = MockContentProvider()
             let viewModel = TaskViewModel(contentProvider: provider, task: provider.tasks.first!)
-            DetailTaskView(viewModel: viewModel)
+            DetailTaskView(viewModel: viewModel, state: .addNew, isPresented: .constant(false))
         }
     }
 }

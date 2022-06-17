@@ -13,7 +13,7 @@ struct TaskModel: Codable {
         TaskModel(id: UUID().uuidString, name: "", priority: .medium)
     }
     
-    enum Priority: String, Codable, CaseIterable, Identifiable {
+    enum Priority: String, Codable, CaseIterable, Identifiable, DescriptionProviding {
         case critical
         case high
         case medium
@@ -33,6 +33,8 @@ struct TaskModel: Codable {
                 return "🛋"
             }
         }
+        
+        var description: String { emoji }
     }
     
     var id: String
