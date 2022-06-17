@@ -19,6 +19,10 @@
 		C328557F285CE0E900999F35 /* ToDoListContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C328557E285CE0E900999F35 /* ToDoListContentProvider.swift */; };
 		C3285581285CE10500999F35 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285580285CE10500999F35 /* DataManager.swift */; };
 		C3285584285CE12500999F35 /* UserDefaultsDatamanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285583285CE12500999F35 /* UserDefaultsDatamanager.swift */; };
+		C3285586285CE16C00999F35 /* DetailTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285585285CE16C00999F35 /* DetailTaskView.swift */; };
+		C3285588285CE1A500999F35 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285587285CE1A500999F35 /* View+Extensions.swift */; };
+		C328558C285CE27600999F35 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C328558B285CE27600999F35 /* InputTextField.swift */; };
+		C3FA73A6285CE56C004F71FF /* CheckMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA73A5285CE56C004F71FF /* CheckMark.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,10 @@
 		C328557E285CE0E900999F35 /* ToDoListContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListContentProvider.swift; sourceTree = "<group>"; };
 		C3285580285CE10500999F35 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C3285583285CE12500999F35 /* UserDefaultsDatamanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDatamanager.swift; sourceTree = "<group>"; };
+		C3285585285CE16C00999F35 /* DetailTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTaskView.swift; sourceTree = "<group>"; };
+		C3285587285CE1A500999F35 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		C328558B285CE27600999F35 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
+		C3FA73A5285CE56C004F71FF /* CheckMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMark.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				C3285564285CDFAF00999F35 /* ToDoListApp.swift */,
-				C3285566285CDFAF00999F35 /* ContentView.swift */,
+				C328558A285CE1B700999F35 /* View */,
+				C3285589285CE1A900999F35 /* Extensions */,
 				C328557B285CE07B00999F35 /* Services */,
 				C3285574285CE02B00999F35 /* Model */,
 				C3285568285CDFB000999F35 /* Assets.xcassets */,
@@ -111,6 +120,33 @@
 			children = (
 				C3285580285CE10500999F35 /* DataManager.swift */,
 				C3285583285CE12500999F35 /* UserDefaultsDatamanager.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C3285589285CE1A900999F35 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C3285587285CE1A500999F35 /* View+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C328558A285CE1B700999F35 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C3285566285CDFAF00999F35 /* ContentView.swift */,
+				C3285585285CE16C00999F35 /* DetailTaskView.swift */,
+				C328558D285CE27900999F35 /* Common */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C328558D285CE27900999F35 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C328558B285CE27600999F35 /* InputTextField.swift */,
+				C3FA73A5285CE56C004F71FF /* CheckMark.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -190,10 +226,14 @@
 				C328557A285CE07700999F35 /* ContentProvider.swift in Sources */,
 				C3285573285CE02300999F35 /* TaskModel.swift in Sources */,
 				C3285576285CE04E00999F35 /* TaskViewModel.swift in Sources */,
+				C3FA73A6285CE56C004F71FF /* CheckMark.swift in Sources */,
+				C3285586285CE16C00999F35 /* DetailTaskView.swift in Sources */,
 				C3285578285CE06000999F35 /* TaskListViewModel.swift in Sources */,
 				C3285567285CDFAF00999F35 /* ContentView.swift in Sources */,
 				C328557D285CE0BC00999F35 /* MockContentProvider.swift in Sources */,
+				C328558C285CE27600999F35 /* InputTextField.swift in Sources */,
 				C3285581285CE10500999F35 /* DataManager.swift in Sources */,
+				C3285588285CE1A500999F35 /* View+Extensions.swift in Sources */,
 				C3285565285CDFAF00999F35 /* ToDoListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
