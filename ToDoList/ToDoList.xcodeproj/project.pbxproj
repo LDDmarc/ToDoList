@@ -24,6 +24,7 @@
 		C328558C285CE27600999F35 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C328558B285CE27600999F35 /* InputTextField.swift */; };
 		C3FA73A6285CE56C004F71FF /* CheckMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA73A5285CE56C004F71FF /* CheckMark.swift */; };
 		C3FA73AA285CE6C0004F71FF /* SegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA73A9285CE6C0004F71FF /* SegmentedPicker.swift */; };
+		C3FA73AC285CF103004F71FF /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA73AB285CF103004F71FF /* TaskListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		C328558B285CE27600999F35 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		C3FA73A5285CE56C004F71FF /* CheckMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMark.swift; sourceTree = "<group>"; };
 		C3FA73A9285CE6C0004F71FF /* SegmentedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPicker.swift; sourceTree = "<group>"; };
+		C3FA73AB285CF103004F71FF /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 			children = (
 				C3285566285CDFAF00999F35 /* ContentView.swift */,
 				C3285585285CE16C00999F35 /* DetailTaskView.swift */,
+				C3FA73AB285CF103004F71FF /* TaskListView.swift */,
 				C328558D285CE27900999F35 /* Common */,
 			);
 			path = View;
@@ -231,6 +234,7 @@
 				C3285576285CE04E00999F35 /* TaskViewModel.swift in Sources */,
 				C3FA73A6285CE56C004F71FF /* CheckMark.swift in Sources */,
 				C3285586285CE16C00999F35 /* DetailTaskView.swift in Sources */,
+				C3FA73AC285CF103004F71FF /* TaskListView.swift in Sources */,
 				C3285578285CE06000999F35 /* TaskListViewModel.swift in Sources */,
 				C3285567285CDFAF00999F35 /* ContentView.swift in Sources */,
 				C328557D285CE0BC00999F35 /* MockContentProvider.swift in Sources */,
