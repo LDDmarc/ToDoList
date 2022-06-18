@@ -28,13 +28,16 @@ final class TaskViewModel: ObservableObject {
         set { task.changePriority(newValue) }
     }
     
-    var id: String { task.id }
-    
     @Published private var task: TaskModel
     private var updateAction: ((TaskModel) -> Void)?
     private var createAction: ((TaskModel) -> Void)?
     
-    private var reserveModel = TaskModel(id: "_", name: "Default", description: "", priority: .medium)
+    private var reserveModel = TaskModel(
+        id: "_",
+        name: "Default",
+        description: "",
+        priority: .medium
+    )
     
     init(
         task: TaskModel,

@@ -21,8 +21,6 @@ final class TaskListViewModel: ObservableObject {
     }
     
     private let contentProvider: ContentProvider
-    
-    @Published private var tasks: [TaskModel] = []
     private var cancellabels: Set<AnyCancellable> = Set()
     
     private lazy var updateAction: (TaskModel) -> Void = { [weak self] task in
@@ -40,15 +38,12 @@ final class TaskListViewModel: ObservableObject {
         
         contentProvider.tasksPublisher
             .sink { [weak self] newTasks in
-                guard let `self` = self else {
-                    return
-                }
+                guard let `self` = self else { return }
                 self.tasksViewModel = newTasks.compactMap { TaskViewModel(
                     task: $0,
                     updateAction: self.updateAction,
                     createAction: self.createAction
                 )}
-                self.tasks = newTasks
             }
             .store(in: &cancellabels)
     }
