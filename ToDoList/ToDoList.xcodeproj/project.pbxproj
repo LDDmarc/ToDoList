@@ -11,6 +11,20 @@
 		C3285567285CDFAF00999F35 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285566285CDFAF00999F35 /* ContentView.swift */; };
 		C3285569285CDFB000999F35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3285568285CDFB000999F35 /* Assets.xcassets */; };
 		C328556C285CDFB000999F35 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C328556B285CDFB000999F35 /* Preview Assets.xcassets */; };
+		C3285573285CE02300999F35 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285572285CE02300999F35 /* TaskModel.swift */; };
+		C3285576285CE04E00999F35 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285575285CE04E00999F35 /* TaskViewModel.swift */; };
+		C3285578285CE06000999F35 /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285577285CE06000999F35 /* TaskListViewModel.swift */; };
+		C328557A285CE07700999F35 /* ContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285579285CE07700999F35 /* ContentProvider.swift */; };
+		C328557D285CE0BC00999F35 /* MockContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C328557C285CE0BC00999F35 /* MockContentProvider.swift */; };
+		C328557F285CE0E900999F35 /* ToDoListContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C328557E285CE0E900999F35 /* ToDoListContentProvider.swift */; };
+		C3285581285CE10500999F35 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285580285CE10500999F35 /* DataManager.swift */; };
+		C3285584285CE12500999F35 /* UserDefaultsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285583285CE12500999F35 /* UserDefaultsDataManager.swift */; };
+		C3285586285CE16C00999F35 /* DetailTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285585285CE16C00999F35 /* DetailTaskView.swift */; };
+		C3285588285CE1A500999F35 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285587285CE1A500999F35 /* View+Extensions.swift */; };
+		C328558C285CE27600999F35 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C328558B285CE27600999F35 /* InputTextField.swift */; };
+		C3FA73A6285CE56C004F71FF /* CheckMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA73A5285CE56C004F71FF /* CheckMark.swift */; };
+		C3FA73AA285CE6C0004F71FF /* SegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA73A9285CE6C0004F71FF /* SegmentedPicker.swift */; };
+		C3FA73AC285CF103004F71FF /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FA73AB285CF103004F71FF /* TaskListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +33,20 @@
 		C3285566285CDFAF00999F35 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C3285568285CDFB000999F35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C328556B285CDFB000999F35 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C3285572285CE02300999F35 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		C3285575285CE04E00999F35 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
+		C3285577285CE06000999F35 /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
+		C3285579285CE07700999F35 /* ContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentProvider.swift; sourceTree = "<group>"; };
+		C328557C285CE0BC00999F35 /* MockContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContentProvider.swift; sourceTree = "<group>"; };
+		C328557E285CE0E900999F35 /* ToDoListContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListContentProvider.swift; sourceTree = "<group>"; };
+		C3285580285CE10500999F35 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		C3285583285CE12500999F35 /* UserDefaultsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDataManager.swift; sourceTree = "<group>"; };
+		C3285585285CE16C00999F35 /* DetailTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTaskView.swift; sourceTree = "<group>"; };
+		C3285587285CE1A500999F35 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		C328558B285CE27600999F35 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
+		C3FA73A5285CE56C004F71FF /* CheckMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMark.swift; sourceTree = "<group>"; };
+		C3FA73A9285CE6C0004F71FF /* SegmentedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPicker.swift; sourceTree = "<group>"; };
+		C3FA73AB285CF103004F71FF /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +80,10 @@
 			isa = PBXGroup;
 			children = (
 				C3285564285CDFAF00999F35 /* ToDoListApp.swift */,
-				C3285566285CDFAF00999F35 /* ContentView.swift */,
+				C328558A285CE1B700999F35 /* View */,
+				C3285589285CE1A900999F35 /* Extensions */,
+				C328557B285CE07B00999F35 /* Services */,
+				C3285574285CE02B00999F35 /* Model */,
 				C3285568285CDFB000999F35 /* Assets.xcassets */,
 				C328556A285CDFB000999F35 /* Preview Content */,
 			);
@@ -65,6 +96,65 @@
 				C328556B285CDFB000999F35 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C3285574285CE02B00999F35 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C3285572285CE02300999F35 /* TaskModel.swift */,
+				C3285575285CE04E00999F35 /* TaskViewModel.swift */,
+				C3285577285CE06000999F35 /* TaskListViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C328557B285CE07B00999F35 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C3285582285CE10C00999F35 /* Common */,
+				C3285579285CE07700999F35 /* ContentProvider.swift */,
+				C328557E285CE0E900999F35 /* ToDoListContentProvider.swift */,
+				C328557C285CE0BC00999F35 /* MockContentProvider.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C3285582285CE10C00999F35 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C3285580285CE10500999F35 /* DataManager.swift */,
+				C3285583285CE12500999F35 /* UserDefaultsDataManager.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C3285589285CE1A900999F35 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C3285587285CE1A500999F35 /* View+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C328558A285CE1B700999F35 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C3285566285CDFAF00999F35 /* ContentView.swift */,
+				C3285585285CE16C00999F35 /* DetailTaskView.swift */,
+				C3FA73AB285CF103004F71FF /* TaskListView.swift */,
+				C328558D285CE27900999F35 /* Common */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C328558D285CE27900999F35 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C328558B285CE27600999F35 /* InputTextField.swift */,
+				C3FA73A9285CE6C0004F71FF /* SegmentedPicker.swift */,
+				C3FA73A5285CE56C004F71FF /* CheckMark.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +227,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3285584285CE12500999F35 /* UserDefaultsDataManager.swift in Sources */,
+				C328557F285CE0E900999F35 /* ToDoListContentProvider.swift in Sources */,
+				C328557A285CE07700999F35 /* ContentProvider.swift in Sources */,
+				C3285573285CE02300999F35 /* TaskModel.swift in Sources */,
+				C3285576285CE04E00999F35 /* TaskViewModel.swift in Sources */,
+				C3FA73A6285CE56C004F71FF /* CheckMark.swift in Sources */,
+				C3285586285CE16C00999F35 /* DetailTaskView.swift in Sources */,
+				C3FA73AC285CF103004F71FF /* TaskListView.swift in Sources */,
+				C3285578285CE06000999F35 /* TaskListViewModel.swift in Sources */,
 				C3285567285CDFAF00999F35 /* ContentView.swift in Sources */,
+				C328557D285CE0BC00999F35 /* MockContentProvider.swift in Sources */,
+				C3FA73AA285CE6C0004F71FF /* SegmentedPicker.swift in Sources */,
+				C328558C285CE27600999F35 /* InputTextField.swift in Sources */,
+				C3285581285CE10500999F35 /* DataManager.swift in Sources */,
+				C3285588285CE1A500999F35 /* View+Extensions.swift in Sources */,
 				C3285565285CDFAF00999F35 /* ToDoListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
