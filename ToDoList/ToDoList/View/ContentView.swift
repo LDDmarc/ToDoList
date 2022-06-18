@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    let contentProvider: ContentProvider
+    @ObservedObject var viewModel: TaskListViewModel
     
     var body: some View {
         NavigationView {
-            TaskListView(viewModel: TaskListViewModel(contentProvider: contentProvider))
+            TaskListView(viewModel: viewModel)
         }
     }
 }

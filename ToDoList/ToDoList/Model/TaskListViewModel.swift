@@ -8,14 +8,30 @@
 import Foundation
 import Combine
 
+// MAIN APP VIEW MODEL
 final class TaskListViewModel: ObservableObject {
     @Published var tasksViewModel: [TaskViewModel] = []
-    lazy var newTaskViewModel = TaskViewModel(contentProvider: contentProvider, task: .new)
+    
+    var newTaskViewModel: TaskViewModel {
+        TaskViewModel(
+            task: TaskModel(id: UUID().uuidString, name: "", priority: .medium),
+            updateAction: updateAction,
+            createAction: createAction
+        )
+    }
     
     private let contentProvider: ContentProvider
     
     @Published private var tasks: [TaskModel] = []
     private var cancellabels: Set<AnyCancellable> = Set()
+    
+    private lazy var updateAction: (TaskModel) -> Void = { [weak self] task in
+        self?.contentProvider.updateTask(newModel: task)
+    }
+    
+    private lazy var createAction: (TaskModel) -> Void = { [weak self] task in
+        self?.contentProvider.addTask(newModel: task)
+    }
     
     init(
         contentProvider: ContentProvider
@@ -27,9 +43,12 @@ final class TaskListViewModel: ObservableObject {
                 guard let `self` = self else {
                     return
                 }
-                print("contentProvider.tasksPublisher")
+                self.tasksViewModel = newTasks.compactMap { TaskViewModel(
+                    task: $0,
+                    updateAction: self.updateAction,
+                    createAction: self.createAction
+                )}
                 self.tasks = newTasks
-                self.tasksViewModel = newTasks.compactMap { TaskViewModel(contentProvider: contentProvider, task: $0) }
             }
             .store(in: &cancellabels)
     }

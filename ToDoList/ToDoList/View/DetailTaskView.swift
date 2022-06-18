@@ -82,10 +82,11 @@ struct DetailTaskView: View {
             action1: {
                 isFocused = false
                 state = .none
-                
+                viewModel.save()
             },
             title2: "Cancel",
             action2: {
+                isFocused = false
                 viewModel.rollBack()
                 state = .none
             }
@@ -110,7 +111,13 @@ struct DetailTaskView: View {
     
     private var editToolBarButton: some View {
         return Button {
-            if state == .edit { viewModel.makeReserveCopy() }
+            switch state {
+            case .addNew, .edit:
+                break
+            case .none:
+                state = .edit
+                viewModel.makeReserveCopy()
+            }
         } label: {
             if state == .none { Text("Edit") }
         }
@@ -158,12 +165,12 @@ fileprivate struct ButtonsView: View {
     }
 }
 
-struct DetailTaskView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            let provider = MockContentProvider()
-            let viewModel = TaskViewModel(contentProvider: provider, task: provider.tasks.first!)
-            DetailTaskView(viewModel: viewModel, state: .addNew, isPresented: .constant(false))
-        }
-    }
-}
+//struct DetailTaskView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            let provider = MockContentProvider()
+//            let viewModel = TaskViewModel(contentProvider: provider, task: provider.tasks.first!)
+//            DetailTaskView(viewModel: viewModel, state: .addNew, isPresented: .constant(false))
+//        }
+//    }
+//}

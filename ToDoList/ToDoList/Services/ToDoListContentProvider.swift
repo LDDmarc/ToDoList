@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 final class ToDoListContentProvider: ContentProvider {
     @Published var tasks: [TaskModel] = []
@@ -18,7 +19,12 @@ final class ToDoListContentProvider: ContentProvider {
         self.dataManager = dataManager
         
         tasks = dataManager.get(type: [TaskModel].self, key: .todoList) ?? []
-        print("dd")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(saveData), name: UIApplication.didEnterBackgroundNotification, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func getTask(for id: String) -> TaskModel? {
@@ -40,6 +46,10 @@ final class ToDoListContentProvider: ContentProvider {
     
     func deleteTasks(offsets: IndexSet) {
         tasks.remove(atOffsets: offsets)
+    }
+    
+    @objc
+    private func saveData() {
         dataManager.save(model: tasks, key: .todoList)
     }
 }

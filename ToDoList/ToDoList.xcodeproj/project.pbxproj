@@ -18,7 +18,7 @@
 		C328557D285CE0BC00999F35 /* MockContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C328557C285CE0BC00999F35 /* MockContentProvider.swift */; };
 		C328557F285CE0E900999F35 /* ToDoListContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C328557E285CE0E900999F35 /* ToDoListContentProvider.swift */; };
 		C3285581285CE10500999F35 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285580285CE10500999F35 /* DataManager.swift */; };
-		C3285584285CE12500999F35 /* UserDefaultsDatamanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285583285CE12500999F35 /* UserDefaultsDatamanager.swift */; };
+		C3285584285CE12500999F35 /* UserDefaultsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285583285CE12500999F35 /* UserDefaultsDataManager.swift */; };
 		C3285586285CE16C00999F35 /* DetailTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285585285CE16C00999F35 /* DetailTaskView.swift */; };
 		C3285588285CE1A500999F35 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3285587285CE1A500999F35 /* View+Extensions.swift */; };
 		C328558C285CE27600999F35 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C328558B285CE27600999F35 /* InputTextField.swift */; };
@@ -40,7 +40,7 @@
 		C328557C285CE0BC00999F35 /* MockContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContentProvider.swift; sourceTree = "<group>"; };
 		C328557E285CE0E900999F35 /* ToDoListContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListContentProvider.swift; sourceTree = "<group>"; };
 		C3285580285CE10500999F35 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		C3285583285CE12500999F35 /* UserDefaultsDatamanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDatamanager.swift; sourceTree = "<group>"; };
+		C3285583285CE12500999F35 /* UserDefaultsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDataManager.swift; sourceTree = "<group>"; };
 		C3285585285CE16C00999F35 /* DetailTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTaskView.swift; sourceTree = "<group>"; };
 		C3285587285CE1A500999F35 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		C328558B285CE27600999F35 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				C3285580285CE10500999F35 /* DataManager.swift */,
-				C3285583285CE12500999F35 /* UserDefaultsDatamanager.swift */,
+				C3285583285CE12500999F35 /* UserDefaultsDataManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -227,7 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3285584285CE12500999F35 /* UserDefaultsDatamanager.swift in Sources */,
+				C3285584285CE12500999F35 /* UserDefaultsDataManager.swift in Sources */,
 				C328557F285CE0E900999F35 /* ToDoListContentProvider.swift in Sources */,
 				C328557A285CE07700999F35 /* ContentProvider.swift in Sources */,
 				C3285573285CE02300999F35 /* TaskModel.swift in Sources */,

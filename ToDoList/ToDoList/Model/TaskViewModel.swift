@@ -31,48 +31,41 @@ final class TaskViewModel: ObservableObject {
     var id: String { task.id }
     
     @Published private var task: TaskModel
-    private var reserveModel: TaskModel
-    private var cancellabels: Set<AnyCancellable> = Set()
+    private var updateAction: ((TaskModel) -> Void)?
+    private var createAction: ((TaskModel) -> Void)?
     
-    private let contentProvider: ContentProvider
+    private var reserveModel = TaskModel(id: "_", name: "Default", description: "", priority: .medium)
     
     init(
-        contentProvider: ContentProvider,
-        task: TaskModel
+        task: TaskModel,
+        updateAction: @escaping (TaskModel) -> Void,
+        createAction: @escaping (TaskModel) -> Void
     ) {
-        self.contentProvider = contentProvider
         self.task = task
-        self.reserveModel = task
-        
-        var isInit = true
-        $task
-            .sink { [weak self] newModel in
-                guard !isInit else {
-                    isInit = false
-                    return
-                }
-                guard let `self` = self else {
-                    return
-                }
-                print("TaskVM contentProvider.updateTask")
-                self.contentProvider.updateTask(newModel: newModel)
-            }
-            .store(in: &cancellabels)
+        self.updateAction = updateAction
+        self.createAction = createAction
     }
     
     func makeReserveCopy() {
-        reserveModel = TaskModel(id: task.id, name: name, description: description, priority: priority, isDone: isDone)
+        reserveModel.rename(name)
+        reserveModel.setIsDone(newValue: isDone)
+        reserveModel.changePriority(priority)
+        reserveModel.setDescription(description)
     }
     
     func rollBack() {
-        isDone = reserveModel.isDone
-        name = reserveModel.name
-        description = reserveModel.description ?? " "
-        priority = reserveModel.priority
+        task.rename(reserveModel.name)
+        task.setIsDone(newValue: reserveModel.isDone)
+        task.changePriority(reserveModel.priority)
+        task.setDescription(reserveModel.description ?? "")
     }
     
     func create() {
-        contentProvider.addTask(newModel: task)
+        createAction?(task)
+    }
+    
+    func save() {
+        updateAction?(task)
     }
 }
 

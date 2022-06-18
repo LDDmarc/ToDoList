@@ -7,15 +7,17 @@
 
 import SwiftUI
 
-let dataManager: DataManager = UserDefaultsDataManager()
-let contentProvider: ContentProvider = ToDoListContentProvider(dataManager: dataManager)
+private let dataManager: DataManager = UserDefaultsDataManager()
+private let contentProvider: ContentProvider = ToDoListContentProvider(dataManager: dataManager)
 //let contentProvider: ContentProvider = MockContentProvider()
 
 @main
 struct ToDoListApp: App {
+    @StateObject var viewModel = TaskListViewModel(contentProvider: contentProvider)
+    
     var body: some Scene {
         WindowGroup {
-            ContentView(contentProvider: contentProvider)
+            ContentView(viewModel: viewModel)
         }
     }
 }

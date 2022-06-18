@@ -9,7 +9,8 @@ import Foundation
 
 struct TaskModel: Codable {
     static let mock = TaskModel(id: "1", name: "Test", priority: .medium)
-    static var new: TaskModel {
+    
+    static func makeNewEmptyModel() -> TaskModel {
         TaskModel(id: UUID().uuidString, name: "", priority: .medium)
     }
     
@@ -56,7 +57,6 @@ struct TaskModel: Codable {
     }
     
     mutating func changePriority(_ newValue: Priority) {
-        print("changePriority")
         priority = newValue
     }
 }
