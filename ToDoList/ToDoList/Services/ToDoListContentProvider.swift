@@ -10,8 +10,8 @@ import Combine
 import SwiftUI
 
 final class ToDoListContentProvider: ContentProvider {
-    @Published var tasks: [TaskModel] = []
-    var tasksPublisher: Published<[TaskModel]>.Publisher { $tasks }
+    @Published var tasks: [TaskModelProtocol] = []
+    var tasksPublisher: Published<[TaskModelProtocol]>.Publisher { $tasks }
     
     private let dataManager: DataManager
     
@@ -27,18 +27,18 @@ final class ToDoListContentProvider: ContentProvider {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func getTask(for id: String) -> TaskModel? {
+    func getTask(for id: String) -> TaskModelProtocol? {
         tasks.first(where: { $0.id == id })
     }
     
     func addTask(
-        newModel: TaskModel
+        newModel: TaskModelProtocol
     ) {
         tasks.append(newModel)
     }
     
     func updateTask(
-        newModel: TaskModel
+        newModel: TaskModelProtocol
     ) {
         guard let taskIndex = tasks.firstIndex(where: { $0.id == newModel.id }) else { return }
         tasks[taskIndex] = newModel
@@ -50,6 +50,7 @@ final class ToDoListContentProvider: ContentProvider {
     
     @objc
     private func saveData() {
+        guard let tasks = tasks as? [TaskModel] else { return }
         dataManager.save(model: tasks, key: .todoList)
     }
 }

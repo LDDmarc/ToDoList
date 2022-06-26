@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-protocol DescriptionProviding {
-    var description: String { get }
-}
-
 struct SegmentedPicker<SelectionValue>: View where SelectionValue: Hashable & Identifiable & DescriptionProviding {
     let title: String
     let selection: Binding<SelectionValue>

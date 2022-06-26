@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct TaskListView: View {
-    @ObservedObject var viewModel: TaskListViewModel
+struct TaskListView<ViewModel: TaskListViewModelProtocol>: View {
+    @ObservedObject var viewModel: ViewModel
     @State private var isAddingViewShowing = false
     
     var body: some View {
@@ -17,20 +17,7 @@ struct TaskListView: View {
                 NavigationLink {
                     DetailTaskView(viewModel: task.wrappedValue, state: .none, isPresented: .constant(false))
                 } label: {
-                    VStack(alignment: .leading, spacing: 5) {
-                        HStack {
-                            Text(task.name.wrappedValue).font(.title3).bold()
-                            TaskPriorityView(taskPriority: task.priority.wrappedValue)
-                            Spacer()
-                            CheckMark(isOn: task.isDone)
-                        }
-                        .opacity(task.isDone.wrappedValue ? 0.7 : 1)
-
-                        Text(task.description.wrappedValue)
-                            .lineLimit(2)
-                            .opacity(task.isDone.wrappedValue ? 0.7 : 1)
-                    }
-                }
+                    TaskCell(task: task)                }
             }
             .onDelete { offsets in
                 viewModel.deleteTasks(offsets: offsets)
@@ -54,13 +41,12 @@ struct TaskListView: View {
 }
 
 struct TaskPriorityView: View {
-    let taskPriority: TaskModel.Priority
+    let taskPriority: Priority
     
     var body: some View {
         Text(taskPriority.emoji)
     }
 }
-
 
 //struct TaskListView_Previews: PreviewProvider {
 //    static var previews: some View {

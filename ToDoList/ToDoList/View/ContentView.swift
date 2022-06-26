@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @ObservedObject var viewModel: TaskListViewModel
+struct ContentView<ViewModel: TaskListViewModelProtocol>: View {
+    @ObservedObject var viewModel: ViewModel
     
     var body: some View {
         NavigationView {

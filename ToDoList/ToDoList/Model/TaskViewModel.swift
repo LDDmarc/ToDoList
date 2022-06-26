@@ -7,7 +7,20 @@
 
 import Combine
 
-final class TaskViewModel: ObservableObject {
+protocol TaskViewModelProtocol: ObservableObject, Identifiable {
+    var name: String { get set }
+    var isDone: Bool { get set }
+    var description: String { get set }
+    var priority: Priority { get set }
+    var id: String { get }
+    
+    func save()
+    func create()
+    func makeReserveCopy()
+    func rollBack()
+}
+
+final class TaskViewModel: TaskViewModelProtocol {
     var name: String {
         get { task.name }
         set { task.rename(newValue) }
@@ -23,30 +36,42 @@ final class TaskViewModel: ObservableObject {
         set { task.setDescription(newValue) }
     }
     
-    var priority: TaskModel.Priority {
+    var priority: Priority {
         get { task.priority }
         set { task.changePriority(newValue) }
     }
     
-    @Published private var task: TaskModel
-    private var updateAction: ((TaskModel) -> Void)?
-    private var createAction: ((TaskModel) -> Void)?
+    var id: String {
+        task.id
+    }
+    
+    @Published private var task: TaskModelProtocol
+    private var updateAction: ((TaskModelProtocol) -> Void)?
+    private var createAction: ((TaskModelProtocol) -> Void)?
     
     private var reserveModel = TaskModel(
         id: "_",
         name: "Default",
-        description: "",
+        description: nil,
         priority: .medium
     )
     
     init(
-        task: TaskModel,
-        updateAction: @escaping (TaskModel) -> Void,
-        createAction: @escaping (TaskModel) -> Void
+        task: TaskModelProtocol,
+        updateAction: @escaping (TaskModelProtocol) -> Void,
+        createAction: @escaping (TaskModelProtocol) -> Void
     ) {
         self.task = task
         self.updateAction = updateAction
         self.createAction = createAction
+    }
+    
+    func save() {
+        updateAction?(task)
+    }
+    
+    func create() {
+        createAction?(task)
     }
     
     func makeReserveCopy() {
@@ -62,13 +87,4 @@ final class TaskViewModel: ObservableObject {
         task.changePriority(reserveModel.priority)
         task.setDescription(reserveModel.description ?? "")
     }
-    
-    func create() {
-        createAction?(task)
-    }
-    
-    func save() {
-        updateAction?(task)
-    }
 }
-

@@ -9,7 +9,18 @@ import Foundation
 import Combine
 
 // MAIN APP VIEW MODEL
-final class TaskListViewModel: ObservableObject {
+/// Есть старшая вью модель, и у нее есть младшие. Младшие ничего не умеюют, просят старшую заниматься их делишками (через updateAction, например) О своих изменениях они банально через  @Published говорят
+/// Старшая моделька общается с сервисами (ContentProvider)
+///
+
+protocol TaskListViewModelProtocol: ObservableObject {
+    associatedtype Model: TaskViewModelProtocol
+    var tasksViewModel: [Model] { get set }
+    var newTaskViewModel: Model { get }
+    func deleteTasks(offsets: IndexSet)
+}
+
+final class TaskListViewModel: TaskListViewModelProtocol {
     @Published var tasksViewModel: [TaskViewModel] = []
     
     var newTaskViewModel: TaskViewModel {
@@ -23,11 +34,11 @@ final class TaskListViewModel: ObservableObject {
     private let contentProvider: ContentProvider
     private var cancellabels: Set<AnyCancellable> = Set()
     
-    private lazy var updateAction: (TaskModel) -> Void = { [weak self] task in
+    private lazy var updateAction: (TaskModelProtocol) -> Void = { [weak self] task in
         self?.contentProvider.updateTask(newModel: task)
     }
     
-    private lazy var createAction: (TaskModel) -> Void = { [weak self] task in
+    private lazy var createAction: (TaskModelProtocol) -> Void = { [weak self] task in
         self?.contentProvider.addTask(newModel: task)
     }
     

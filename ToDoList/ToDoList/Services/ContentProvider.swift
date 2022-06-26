@@ -9,17 +9,17 @@ import Foundation
 import Combine
 
 protocol ContentProvider {
-    var tasks: [TaskModel] { get }
-    var tasksPublisher: Published<[TaskModel]>.Publisher { get }
+    var tasks: [TaskModelProtocol] { get }
+    var tasksPublisher: Published<[TaskModelProtocol]>.Publisher { get }
     
-    func getTask(for id: String) -> TaskModel?
+    func getTask(for id: String) -> TaskModelProtocol?
     
     func addTask(
-        newModel: TaskModel
+        newModel: TaskModelProtocol
     )
     
     func updateTask(
-        newModel: TaskModel
+        newModel: TaskModelProtocol
     )
     
     func deleteTasks(offsets: IndexSet)

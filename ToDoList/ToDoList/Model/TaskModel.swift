@@ -7,35 +7,22 @@
 
 import Foundation
 
-struct TaskModel: Codable {
-    static let mock = TaskModel(id: "1", name: "Test", priority: .medium)
+protocol TaskModelProtocol: Codable {
+    var id: String { get }
+    var name: String { get }
+    var description: String? { get }
+    var priority: Priority { get }
+    var isDone: Bool { get }
     
+    mutating func rename(_ newName: String)
+    mutating func setIsDone(newValue: Bool)
+    mutating func setDescription(_ newDescriprion: String)
+    mutating func changePriority(_ newValue: Priority)
+}
+
+struct TaskModel: TaskModelProtocol {
     static func makeNewEmptyModel() -> TaskModel {
         TaskModel(id: UUID().uuidString, name: "", priority: .medium)
-    }
-    
-    enum Priority: String, Codable, CaseIterable, Identifiable, DescriptionProviding {
-        case critical
-        case high
-        case medium
-        case low
-        
-        var id: Self { self }
-        
-        var emoji: String {
-            switch self {
-            case .critical:
-                return "🔥"
-            case .high:
-                return "🤯"
-            case .medium:
-                return "🔜"
-            case .low:
-                return "🛋"
-            }
-        }
-        
-        var description: String { emoji }
     }
     
     var id: String

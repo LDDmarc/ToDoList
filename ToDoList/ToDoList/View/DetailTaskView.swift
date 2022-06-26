@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-struct DetailTaskView: View {
-    @ObservedObject var viewModel: TaskViewModel
+struct DetailTaskView<ViewModel: TaskViewModelProtocol>: View {
+    @ObservedObject var viewModel: ViewModel
     @State var state: EditingState
     @Binding var isPresented: Bool
     
     @FocusState private var isFocused: Bool
-    private var priorities = TaskModel.Priority.allCases
+    private var priorities = Priority.allCases
     
     init(
-        viewModel: TaskViewModel,
+        viewModel: ViewModel,
         state: EditingState,
         isPresented: Binding<Bool>
     ) {
@@ -61,7 +61,7 @@ struct DetailTaskView: View {
                 case .addNew:
                     saveButton.padding()
                 case .edit:
-                    editButtons.padding()
+                    buttonsView.padding()
                 case .none:
                     EmptyView()
                 }
@@ -74,23 +74,6 @@ struct DetailTaskView: View {
                 editToolBarButton
             }
         }
-    }
-    
-    private var editButtons: some View {
-        ButtonsView(
-            title1: "Save",
-            action1: {
-                isFocused = false
-                state = .none
-                viewModel.save()
-            },
-            title2: "Cancel",
-            action2: {
-                isFocused = false
-                viewModel.rollBack()
-                state = .none
-            }
-        )
     }
     
     private var saveButton: some View {
@@ -122,26 +105,13 @@ struct DetailTaskView: View {
             if state == .none { Text("Edit") }
         }
     }
-}
-
-extension DetailTaskView {
-    enum EditingState {
-        case addNew
-        case edit
-        case none
-    }
-}
-
-fileprivate struct ButtonsView: View {
-    var title1: String
-    var action1: () -> Void
-    var title2: String
-    var action2: () -> Void
     
-    var body: some View {
+    private var buttonsView: some View {
         HStack {
             Button {
-                action1()
+                isFocused = false
+                state = .none
+                viewModel.save()
             } label: {
                 Text("Save")
                     .bold()
@@ -149,10 +119,14 @@ fileprivate struct ButtonsView: View {
                     .frame(maxWidth: .infinity)
                     .padding()
                     .roundedBorder()
+                    .disabled(viewModel.name.isEmpty)
+                    .opacity(viewModel.name.isEmpty ? 0.5 : 1)
             }
             
             Button {
-                action2()
+                isFocused = false
+                viewModel.rollBack()
+                state = .none
             } label: {
                 Text("Cancel")
                     .foregroundColor(Color(UIColor.systemRed))
@@ -162,6 +136,15 @@ fileprivate struct ButtonsView: View {
             }
             
         }
+        
+    }
+}
+
+extension DetailTaskView {
+    enum EditingState {
+        case addNew
+        case edit
+        case none
     }
 }
 
